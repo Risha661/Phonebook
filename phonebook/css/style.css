@@ -16,6 +16,11 @@ body {
   text-transform: uppercase;
 }
 
+.p-text {
+  font-size: 16px;
+  font-weight: normal;
+}
+
 @media (max-width: 720px) {
   .logo {
     font-size: 20px;

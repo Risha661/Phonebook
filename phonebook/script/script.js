@@ -62,17 +62,22 @@ const data = [
   };
 
   
-  // const createFooter = () => {
-  //   const footer = document.createElement('footer');
-  //   footer.classList.add('footer');
+  const createFooter = (title) => {
+    const footer = document.createElement('footer');
+    footer.classList.add('footer');
 
-  //   const footerContainer = createContainer();
-  //   footer.append(footerContainer);
+    const footerContainer = createContainer();
+    footer.append(footerContainer);
 
-  //   footer.footerContainer = footerContainer;
+    footer.footerContainer = footerContainer;
 
-  //   return footer;
-  // };
+    const pText = document.createElement('p');
+    pText.classList.add('p-text');
+    pText.textContent = `Все права защищены © ${title}`;
+    footerContainer.append(pText);
+
+    return footer;
+  };
 
   const createButtonsGroup = (params) => {
     const btnWrapper = document.createElement('div');
@@ -168,6 +173,7 @@ const data = [
     const header = createHeader();
     const logo = createLogo(title);
     const main = createMain();
+    const footer = createFooter(title);
     const buttonGroup = createButtonsGroup([
       {
         className: 'btn btn-primary mr-3',
@@ -185,7 +191,7 @@ const data = [
 
     header.headerContainer.append(logo);
     main.mainContainer.append(buttonGroup.btnWrapper, table, form.overlay);
-    app.append(header, main);
+    app.append(header, main, footer);
 
     return {
       list: table.tbody,

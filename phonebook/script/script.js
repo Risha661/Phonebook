@@ -247,6 +247,7 @@ const data = [
     });
   };
 
+
   const init = (selectorApp, title) => {
     const app = document.querySelector(selectorApp);
     const phoneBook = renderPhoneBook(app, title);
@@ -260,7 +261,7 @@ const data = [
 
     btnAdd.addEventListener('click', () => {
       formOverlay.classList.add('is-visible');
-    });
+    }); // отвечает за открытие модалки
 
     form.addEventListener('click', event => {
       event.stopPropagation();
@@ -273,6 +274,10 @@ const data = [
     document.addEventListener('touchstart', e => {
       console.log(e);
     });
+
+    document.querySelector('.close').addEventListener('click', () => {
+      formOverlay.classList.remove('is-visible');
+    }); // кнопка для закрытия модалки, т.е. form.overlay
 
     document.addEventListener('touchmove', e => {
       console.log(e.type);

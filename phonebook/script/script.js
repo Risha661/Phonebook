@@ -5,21 +5,25 @@ const data = [
     name: 'Иван',
     surname: 'Петров',
     phone: '+79514545454',
+    button: 'Редактировать',
   },
   {
     name: 'Игорь',
     surname: 'Семёнов',
     phone: '+79999999999',
+    button: 'Редактировать',
   },
   {
     name: 'Семён',
     surname: 'Иванов',
     phone: '+79800252525',
+    button: 'Редактировать',
   },
   {
     name: 'Мария',
     surname: 'Попова',
     phone: '+79876543210',
+    button: 'Редактировать',
   },
 ];
 
@@ -201,7 +205,7 @@ const data = [
     };
   };
 
-  const createRow = ({name: firstName, surname, phone}) => {
+  const createRow = ({name: firstName, surname, phone, button}) => {
     const tr = document.createElement('tr');
 
     const tdDel = document.createElement('td');
@@ -224,7 +228,13 @@ const data = [
 
     tdPhone.append(phoneLink);
 
-    tr.append(tdDel, tdName, tdSurname, tdPhone);
+    const tdBtn = document.createElement('td');
+    const btnRetouch = document.createElement('button');
+    btnRetouch.classList.add('btn', 'btn-danger');
+    btnRetouch.textContent = button;
+    tdBtn.append(btnRetouch);
+
+    tr.append(tdDel, tdName, tdSurname, tdPhone, tdBtn);
 
     return tr;
   };

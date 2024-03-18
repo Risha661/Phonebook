@@ -108,7 +108,7 @@ const data = [
     const thead = document.createElement('thead');
     thead.insertAdjacentHTML('beforeend', `
     <tr>
-    <th class='delete'>Уудалить</th>
+    <th class='delete'>Удалить</th>
     <th>Имя</th>
     <th>Фамилия</th>
     <th>Телефон</th>
@@ -200,6 +200,7 @@ const data = [
       list: table.tbody,
       logo,
       btnAdd: buttonGroup.btns[0],
+      btnDel: buttonGroup.btns[1],
       formOverlay: form.overlay,
       form: form.form,
     };
@@ -207,6 +208,8 @@ const data = [
 
   const createRow = ({name: firstName, surname, phone, button}) => {
     const tr = document.createElement('tr');
+    tr.classList.add('contact');
+    // добавили класс для строки,чтобы реализовать удаление контакта
 
     const tdDel = document.createElement('td');
     tdDel.classList.add('delete');
@@ -262,7 +265,14 @@ const data = [
     const app = document.querySelector(selectorApp);
     const phoneBook = renderPhoneBook(app, title);
 
-    const {list, logo, btnAdd, formOverlay, form} = phoneBook;
+    const {
+      list,
+      logo,
+      btnAdd,
+      formOverlay,
+      form,
+      btnDel,
+    } = phoneBook;
     // Функционал
 
     const allRow = renderContacts(list, data);
@@ -273,12 +283,11 @@ const data = [
       formOverlay.classList.add('is-visible');
     }); // отвечает за открытие модалки
 
-    form.addEventListener('click', event => {
-      event.stopPropagation();
-    });
-
-    formOverlay.addEventListener('click', () => {
-      formOverlay.classList.remove('is-visible');
+    formOverlay.addEventListener('click', e => {
+      const target = e.target;
+      if (target === formOverlay) {
+        formOverlay.classList.remove('is-visible');
+      }
     });
 
     document.addEventListener('touchstart', e => {
@@ -296,6 +305,31 @@ const data = [
     document.addEventListener('touchend', e => {
       console.log(e.type);
     });
+
+    btnDel.addEventListener('click', () => {
+      document.querySelectorAll('.delete').forEach(del => {
+        del.classList.toggle('is-visible');
+      });
+    }); // Перебор элементов с классом delete
+
+    list.addEventListener('click', e => {
+      const target = e.target;
+
+      if (target.closest('.del-icon')) {
+        target.closest('.contact').remove();
+      }
+    });
+    // Реализация удаления строки контакта
+
+    // setTimeout(() => {
+    //   const contact = createRow({
+    //     name: 'Ирина',
+    //     surname: 'Князева',
+    //     phone: '+79261561119',
+    //     button: 'Редактировать',
+    //   });
+    //   list.append(contact);
+    // }, 2000) // Реализация проверки добавления и удаление новых контактов
   };
 
   window.phoneBookInit = init;

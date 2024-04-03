@@ -1,36 +1,37 @@
 'use strict';
-
-const data = [
-  {
-    name: 'Иван',
-    surname: 'Петров',
-    phone: '+79514545454',
-    button: 'Редактировать',
-  },
-  {
-    name: 'Игорь',
-    surname: 'Семёнов',
-    phone: '+79999999999',
-    button: 'Редактировать',
-  },
-  {
-    name: 'Семён',
-    surname: 'Иванов',
-    phone: '+79800252525',
-    button: 'Редактировать',
-  },
-  {
-    name: 'Мария',
-    surname: 'Попова',
-    phone: '+79876543210',
-    button: 'Редактировать',
-  },
-];
-
 {
+  const getStorage = key => {
+    const storedData = localStorage.getItem(key);
+    return storedData ? JSON.parse(storedData) : [];
+  };
+
+  const setStorage = (testContact, newDataContact) => {
+    const storedData = localStorage.getItem('userContact');
+    let updatedData = [];
+    if (storedData) {
+      updatedData = JSON.parse(storedData);
+    }
+    localStorage.setItem('userContact', JSON.stringify(newDataContact));
+  };
+
+  const removeStorage = (index) => {
+    const contacts = JSON.parse(localStorage.getItem('userContact')) || [];
+    if (index >= 0 && index < contacts.length) {
+      contacts.splice(index, 1);
+      localStorage.setItem('userContact', JSON.stringify(contacts));
+    } else {
+      alert('Error!');
+    }
+  };
+
+  let data = getStorage('userContact');
+
   const addContactData = contact => {
     data.push(contact);
+    setStorage('userContact', data);
+    data = getStorage('userContact');
   };
+
   const createContainer = () => {
     const container = document.createElement('div');
     container.classList.add('container');
@@ -212,7 +213,6 @@ const data = [
   const createRow = ({name: firstName, surname, phone, button}) => {
     const tr = document.createElement('tr');
     tr.classList.add('contact');
-    // добавили класс для строки,чтобы реализовать удаление контакта
 
     const tdDel = document.createElement('td');
     tdDel.classList.add('delete');
@@ -241,6 +241,7 @@ const data = [
     tdBtn.append(btnRetouch);
 
     tr.append(tdDel, tdName, tdSurname, tdPhone, tdBtn);
+
 
     return tr;
   };
@@ -291,17 +292,21 @@ const data = [
       document.querySelectorAll('.delete').forEach(del => {
         del.classList.toggle('is-visible');
       });
-    }); // Перебор элементов с классом delete
-
+    });
 
     list.addEventListener('click', e => {
       const target = e.target;
 
       if (target.closest('.del-icon')) {
-        target.closest('.contact').remove();
+        const contactElement = target.closest('.contact');
+        const index =
+        Array.from(contactElement.parentNode.children).indexOf(contactElement);
+        removeStorage(index);
+        contactElement.remove();
       }
     });
   };
+
   const addContactPage = (contact, list) => {
     list.append(createRow(contact));
   };
@@ -313,8 +318,11 @@ const data = [
       const newContact = Object.fromEntries(formData);
       console.log(newContact);
 
+      setStorage('userContact', newContact);
+
       addContactPage(newContact, list);
       addContactData(newContact);
+
       form.reset();
       closeModal();
     });
@@ -331,17 +339,12 @@ const data = [
       formOverlay,
       btnDel,
     } = renderPhoneBook(app, title);
-    // Функционал
 
     const allRow = renderContacts(list, data);
     const {closeModal} = modalControl(btnAdd, formOverlay);
-
     hoverRow(allRow, logo);
     deleteControl(btnDel, list);
     formControl(form, list, closeModal);
-    // document.querySelector('.close').addEventListener('click', () => {
-    //   formOverlay.classList.remove('is-visible');
-    // }); // кнопка для закрытия модалки, т.е. form.overlay
   };
 
   window.phoneBookInit = init;

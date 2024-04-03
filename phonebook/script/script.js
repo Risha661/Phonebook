@@ -5,13 +5,8 @@
     return storedData ? JSON.parse(storedData) : [];
   };
 
-  const setStorage = (testContact, newDataContact) => {
-    const storedData = localStorage.getItem('userContact');
-    let updatedData = [];
-    if (storedData) {
-      updatedData = JSON.parse(storedData);
-    }
-    localStorage.setItem('userContact', JSON.stringify(newDataContact));
+  const setStorage = (key, newDataContact) => {
+    localStorage.setItem(key, JSON.stringify(newDataContact));
   };
 
   const removeStorage = (index) => {

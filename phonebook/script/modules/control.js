@@ -1,4 +1,3 @@
-
 import * as create from './createElements.js';
 import {setStorage, removeStorage,
   addContactData} from './serviceStorage.js';

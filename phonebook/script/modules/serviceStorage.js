@@ -17,6 +17,35 @@ const removeStorage = (index) => {
   }
 };
 
+
+localStorage.setItem('userContact', JSON.stringify([
+  {
+    name: 'Иван',
+    surname: 'Петров',
+    phone: '+79514545454',
+    button: 'Редактировать',
+  },
+  {
+    name: 'Игорь',
+    surname: 'Семёнов',
+    phone: '+79999999999',
+    button: 'Редактировать',
+  },
+  {
+    name: 'Семён',
+    surname: 'Иванов',
+    phone: '+79800252525',
+    button: 'Редактировать',
+  },
+  {
+    name: 'Мария',
+    surname: 'Попова',
+    phone: '+79876543210',
+    button: 'Редактировать',
+  },
+]));
+const data = getStorage('userContact');
+
 const addContactData = (data, contact) => {
   data.push(contact);
   setStorage('userContact', data);
@@ -25,3 +54,4 @@ const addContactData = (data, contact) => {
 
 export {getStorage};
 export {setStorage, removeStorage, addContactData};
+export {data};

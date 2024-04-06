@@ -1,8 +1,9 @@
+
 export const createContainer = () => {
   const container = document.createElement('div');
   container.classList.add('container');
   return container;
-}
+};
 
 export const createHeader = () => {
   const header = document.createElement('header');
@@ -14,7 +15,7 @@ export const createHeader = () => {
   header.headerContainer = headerContainer;
 
   return header;
-}
+};
 
 export const createLogo = (title) => {
   const h1 = document.createElement('h1');
@@ -22,7 +23,7 @@ export const createLogo = (title) => {
   h1.textContent = `Телефонный справочник. ${title}`;
 
   return h1;
-}
+};
 
 export const createMain = () => {
   const main = document.createElement('main');
@@ -32,7 +33,7 @@ export const createMain = () => {
   main.mainContainer = mainContainer;
 
   return main;
-}
+};
 
 export const createFooter = (title) => {
   const footer = document.createElement('footer');
@@ -49,7 +50,7 @@ export const createFooter = (title) => {
   footerContainer.append(pText);
 
   return footer;
-}
+};
 
 export const createButtonsGroup = (params) => {
   const btnWrapper = document.createElement('div');
@@ -68,7 +69,7 @@ export const createButtonsGroup = (params) => {
     btnWrapper,
     btns,
   };
-}
+};
 
 export const createTable = () => {
   const table = document.createElement('table');
@@ -90,7 +91,7 @@ export const createTable = () => {
   table.tbody = tbody;
 
   return table;
-}
+};
 
 export const createForm = () => {
   const overlay = document.createElement('div');
@@ -139,7 +140,7 @@ export const createForm = () => {
     overlay,
     form,
   };
-}
+};
 
 export const createRow = ({name: firstName, surname, phone, button}) => {
   const tr = document.createElement('tr');
@@ -175,4 +176,4 @@ export const createRow = ({name: firstName, surname, phone, button}) => {
 
 
   return tr;
-}
+};

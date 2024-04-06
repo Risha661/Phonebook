@@ -1,12 +1,11 @@
 import {modalControl, deleteControl, formControl} from './modules/control.js';
 import hoverRow from './modules/control.js';
 import {renderPhoneBook, renderContacts} from './modules/render.js';
-import {getStorage} from './modules/serviceStorage.js';
+import {data} from './modules/serviceStorage.js';
 
 {
   const init = (selectorApp, title) => {
     const app = document.querySelector(selectorApp);
-    const data = getStorage('userContact');
 
     const {
       list,

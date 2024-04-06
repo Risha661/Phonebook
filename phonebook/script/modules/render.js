@@ -2,13 +2,13 @@ import * as create from './modules/createElements.js';
 
 create.createContainer();
 create.createHeader();
-create.createLogo(title);
+create.createLogo();
 create.createMain();
-create.createFooter(title);
-create.createButtonsGroup(params);
+create.createFooter();
+create.createButtonsGroup();
 create.createTable();
 create.createForm();
-create.createRow({name: firstName, surname, phone, button});
+create.createRow();
 
 const renderPhoneBook = (app, title) => {
   const header = createHeader();
@@ -50,4 +50,4 @@ const renderContacts = (elem, data) => {
   return allRow;
 };
 
-export { renderPhoneBook, renderContacts };
+export {renderPhoneBook, renderContacts};

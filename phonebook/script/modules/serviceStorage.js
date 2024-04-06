@@ -1,15 +1,3 @@
-import * as create from './modules/createElements.js';
-
-create.createContainer();
-create.createHeader();
-create.createLogo();
-create.createMain();
-create.createFooter();
-create.createButtonsGroup();
-create.createTable();
-create.createForm();
-create.createRow();
-
 const getStorage = key => {
   const storedData = localStorage.getItem(key);
   return storedData ? JSON.parse(storedData) : [];

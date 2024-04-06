@@ -1,18 +1,7 @@
 
-import * as create from './modules/createElements.js';
+import * as create from './createElements.js';
 import {setStorage, removeStorage,
-  addContactData} from './modules/serviceStorage.js';
-import {createRow} from './createElements.js';
-
-create.createContainer();
-create.createHeader();
-create.createLogo();
-create.createMain();
-create.createFooter();
-create.createButtonsGroup();
-create.createTable();
-create.createForm();
-create.createRow();
+  addContactData} from './serviceStorage.js';
 
 const hoverRow = (allRow, logo) => {
   const text = logo.textContent;
@@ -70,7 +59,7 @@ const deleteControl = (btnDel, list) => {
 };
 
 const addContactPage = (contact, list) => {
-  list.append(createRow(contact));
+  list.append(create.createRow(contact));
 };
 
 const formControl = (form, list, closeModal) => {

@@ -1,14 +1,11 @@
-import * as create from './modules/createElements.js';
-
-const {createHeader, createLogo, createMain, createFooter,
-  createButtonsGroup, createTable, createForm, createRow} = create;
+import * as create from './createElements.js';
 
 const renderPhoneBook = (app, title) => {
-  const header = createHeader();
-  const logo = createLogo(title);
-  const main = createMain();
-  const footer = createFooter(title);
-  const buttonGroup = createButtonsGroup([
+  const header = create.createHeader();
+  const logo = create.createLogo(title);
+  const main = create.createMain();
+  const footer = create.createFooter(title);
+  const buttonGroup = create.createButtonsGroup([
     {
       className: 'btn btn-primary mr-3 js-add',
       type: 'button',
@@ -20,8 +17,8 @@ const renderPhoneBook = (app, title) => {
       text: 'Удалить',
     },
   ]);
-  const table = createTable();
-  const {form, overlay} = createForm();
+  const table = create.createTable();
+  const {form, overlay} = create.createForm();
 
   header.headerContainer.append(logo);
   main.mainContainer.append(buttonGroup.btnWrapper, table, overlay);
@@ -38,7 +35,7 @@ const renderPhoneBook = (app, title) => {
 };
 
 const renderContacts = (elem, data) => {
-  const allRow = data.map(createRow);
+  const allRow = data.map(create.createRow);
   elem.append(...allRow);
   return allRow;
 };

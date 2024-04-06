@@ -1,18 +1,7 @@
 import {modalControl, deleteControl, formControl} from './modules/control.js';
-import {hoverRow} from './modules/control.js';
-import * as create from './modules/createElements.js';
+import hoverRow from './modules/control.js';
 import {renderPhoneBook, renderContacts} from './modules/render.js';
 import {getStorage} from './modules/serviceStorage.js';
-
-create.createContainer();
-create.createHeader();
-create.createLogo();
-create.createMain();
-create.createFooter();
-create.createButtonsGroup();
-create.createTable();
-create.createForm();
-create.createRow();
 
 {
   const init = (selectorApp, title) => {

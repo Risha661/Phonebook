@@ -35,9 +35,9 @@ const renderPhoneBook = (app, title) => {
 };
 
 const renderContacts = (elem, data) => {
-  //const allRow = data.map(create.createRow());
-  //elem.append(...allRow);
-  //return allRow;
+  const allRow = data.map(contact => create.createRow(contact));
+  elem.append(...allRow);
+  return allRow;
 };
 
 export {renderPhoneBook, renderContacts};

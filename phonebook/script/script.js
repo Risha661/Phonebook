@@ -1,5 +1,5 @@
 import {modalControl, deleteControl, formControl} from './modules/control.js';
-import hoverRow from './modules/control.js';
+import {hoverRow} from './modules/control.js';
 import * as create from './modules/createElements.js';
 import {renderPhoneBook, renderContacts} from './modules/render.js';
 import {getStorage} from './modules/serviceStorage.js';

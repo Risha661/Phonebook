@@ -2,6 +2,7 @@
 import * as create from './modules/createElements.js';
 import {setStorage, removeStorage,
   addContactData} from './modules/serviceStorage.js';
+import {createRow} from './createElements.js';
 
 create.createContainer();
 create.createHeader();

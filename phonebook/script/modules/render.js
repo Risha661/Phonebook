@@ -1,14 +1,7 @@
 import * as create from './modules/createElements.js';
 
-create.createContainer();
-create.createHeader();
-create.createLogo();
-create.createMain();
-create.createFooter();
-create.createButtonsGroup();
-create.createTable();
-create.createForm();
-create.createRow();
+const {createHeader, createLogo, createMain, createFooter,
+  createButtonsGroup, createTable, createForm, createRow} = create;
 
 const renderPhoneBook = (app, title) => {
   const header = createHeader();

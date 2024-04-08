@@ -17,40 +17,42 @@ const removeStorage = (index) => {
   }
 };
 
+// localStorage.setItem('userContact', JSON.stringify([
+//   {
+//     name: 'Иван',
+//     surname: 'Петров',
+//     phone: '+79514545454',
+//     button: 'Редактировать',
+//   },
+//   {
+//     name: 'Игорь',
+//     surname: 'Семёнов',
+//     phone: '+79999999999',
+//     button: 'Редактировать',
+//   },
+//   {
+//     name: 'Семён',
+//     surname: 'Иванов',
+//     phone: '+79800252525',
+//     button: 'Редактировать',
+//   },
+//   {
+//     name: 'Мария',
+//     surname: 'Попова',
+//     phone: '+79876543210',
+//     button: 'Редактировать',
+//   },
+// ]));
 
-localStorage.setItem('userContact', JSON.stringify([
-  {
-    name: 'Иван',
-    surname: 'Петров',
-    phone: '+79514545454',
-    button: 'Редактировать',
-  },
-  {
-    name: 'Игорь',
-    surname: 'Семёнов',
-    phone: '+79999999999',
-    button: 'Редактировать',
-  },
-  {
-    name: 'Семён',
-    surname: 'Иванов',
-    phone: '+79800252525',
-    button: 'Редактировать',
-  },
-  {
-    name: 'Мария',
-    surname: 'Попова',
-    phone: '+79876543210',
-    button: 'Редактировать',
-  },
-]));
-const data = getStorage('userContact');
+const data = getStorage('userContact') || [];
+console.log(data);
 
-const addContactData = (data, contact) => {
+const addContactData = (contact) => {
   data.push(contact);
   setStorage('userContact', data);
-  data = getStorage('userContact');
+  // getStorage('userContact');
 };
+
 
 export {getStorage};
 export {setStorage, removeStorage, addContactData};

@@ -2,6 +2,7 @@
 import * as create from './createElements.js';
 import {setStorage, removeStorage,
   addContactData} from './serviceStorage.js';
+  
 
 const hoverRow = (allRow, logo) => {
   const text = logo.textContent;
@@ -32,6 +33,7 @@ const modalControl = (btnAdd, formOverlay) => {
       closeModal();
     }
   });
+  // closeModal();
 
   return {
     closeModal,
@@ -69,7 +71,6 @@ const formControl = (form, list, closeModal) => {
     const newContact = Object.fromEntries(formData);
     console.log(newContact);
 
-    setStorage('userContact', newContact);
 
     addContactPage(newContact, list);
     addContactData(newContact);

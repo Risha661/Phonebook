@@ -1,4 +1,4 @@
-const getStorage = key => {
+const getStorage = (key) => {
   const storedData = localStorage.getItem(key);
   return storedData ? JSON.parse(storedData) : [];
 };
@@ -8,12 +8,12 @@ const setStorage = (key, newDataContact) => {
 };
 
 const removeStorage = (index) => {
-  const contacts = JSON.parse(localStorage.getItem('userContact')) || [];
+  const contacts = JSON.parse(localStorage.getItem("userContact")) || [];
   if (index >= 0 && index < contacts.length) {
     contacts.splice(index, 1);
-    localStorage.setItem('userContact', JSON.stringify(contacts));
+    localStorage.setItem("userContact", JSON.stringify(contacts));
   } else {
-    alert('Error!');
+    alert("Error!");
   }
 };
 
@@ -44,16 +44,15 @@ const removeStorage = (index) => {
 //   },
 // ]));
 
-const data = getStorage('userContact') || [];
+const data = getStorage("userContact") || [];
 console.log(data);
 
 const addContactData = (contact) => {
   data.push(contact);
-  setStorage('userContact', data);
+  setStorage("userContact", data);
   // getStorage('userContact');
 };
 
-
-export {getStorage};
-export {setStorage, removeStorage, addContactData};
-export {data};
+export { getStorage };
+export { setStorage, removeStorage, addContactData };
+export { data };

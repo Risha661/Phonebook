@@ -9,7 +9,7 @@
     "parser": "babel-eslint",
     "ecmaVersion": "latest",
     "sourceType": "module"
-  },
+    },
   "rules": {
     "no-console": "off",
     "no-loop-func": [

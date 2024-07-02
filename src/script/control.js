@@ -1,7 +1,7 @@
 
-import * as create from './createElements.js';
+import * as create from './createElements';
 import {setStorage, removeStorage,
-  addContactData} from './serviceStorage.js';
+  addContactData} from './serviceStorage';
   
 
 const hoverRow = (allRow, logo) => {
